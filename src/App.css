@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+#root {
+  font-family: 'Tajawal', sans-serif;
+}
+
+.read-the-docs {
+  color: #888;
+  font-size: small;
+}
+.card {
+  padding: 2rem;
+  border-radius: 7px;
+  border: 1px transparent solid;
+  transition: 1s all;
+}
+.card:hover {
+  border: 1px slateblue solid;
+}

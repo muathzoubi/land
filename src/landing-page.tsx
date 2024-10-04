@@ -38,7 +38,7 @@ export default function LandingPage() {
               اتصل بنا
             </a>
           </div>
-          <button className="hidden md:inline-flex">ابدأ الآن</button>
+          <button className="hidden md:inline-flex py-2 px-3">ابدأ الآن</button>
         </nav>
       </header>
       <main className="flex-1">
@@ -52,10 +52,10 @@ export default function LandingPage() {
                 نساعدك في تأسيس شركتك والحصول على سجل تجاري موثق بكل يسر وفعالية
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                <button className="bg-white text-blue-600 hover:bg-blue-50">
+                <button className="bg-white text-blue-600 hover:bg-blue-50 py-2 px-3">
                   ابدأ الآن
                 </button>
-                <button className="bg-transparent border-white text-white hover:bg-white/10">
+                <button className="bg-transparent py-2 px-3 border-white text-white hover:bg-white/10">
                   تعرف على المزيد
                 </button>
               </div>

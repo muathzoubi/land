@@ -7,7 +7,7 @@ import {
   MapPin,
 } from 'lucide-react';
 
-export default function LandingPage() {
+export default function LandingPage({handlePage}:any) {
   return (
     <div className="flex flex-col min-h-screen " dir="rtl">
       <header className="px-4 lg:px-6 h-14 flex items-center border-b sticky top-0 z-50 bg-white ">
@@ -38,7 +38,7 @@ export default function LandingPage() {
               اتصل بنا
             </a>
           </div>
-          <button className="hidden md:inline-flex py-2 px-3">ابدأ الآن</button>
+          <button className="hidden md:inline-flex py-2 px-3"  onClick={handlePage}>ابدأ الآن</button>
         </nav>
       </header>
       <main className="flex-1">
@@ -52,7 +52,7 @@ export default function LandingPage() {
                 نساعدك في تأسيس شركتك والحصول على سجل تجاري موثق بكل يسر وفعالية
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                <button className="bg-white text-blue-600 hover:bg-blue-50 py-2 px-3">
+                <button className="bg-white text-blue-600 hover:bg-blue-50 py-2 px-3" onClick={handlePage}>
                   ابدأ الآن
                 </button>
                 <button className="bg-transparent py-2 px-3 border-white text-white hover:bg-white/10">

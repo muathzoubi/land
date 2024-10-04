@@ -28,7 +28,10 @@ form {
   min-height: 100%;
   z-index: -1;
 }
-x button:hover {
+p{
+  text-shadow: #213547 1px 1px 2px;
+}
+ button:hover {
   border-color: #646cff;
 }
 button:focus,

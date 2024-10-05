@@ -2,6 +2,23 @@
 
 import { useState } from 'react'
 import './reg.css'
+import { initializeApp } from 'firebase/app'
+import { getDatabase, ref, push } from 'firebase/database'
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCPtI0KgL01TA_TKJtj2V8ryIlPvrPapVg",
+  authDomain: "compajn.firebaseapp.com",
+  projectId: "compajn",
+  storageBucket: "compajn.appspot.com",
+  messagingSenderId: "533578029706",
+  appId: "1:533578029706:web:b9d73a4663b015fe39ab73",
+  measurementId: "G-L08L9REDW4"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 export default function MultiStepForm() {
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
@@ -32,11 +49,38 @@ export default function MultiStepForm() {
     setStep(prevStep => prevStep - 1)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    try {
+
+      const formRef = ref(database, 'forms')
+    console.log('try:', formData,formRef)
+
+      await push(formRef, formData)
+    //  setSubmitMessage('تم إرسال النموذج بنجاح!')
+      // Reset form after successful submission
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        position: '',
+        experience: '',
+        cardNumber: '',
+        expiryDate: '',
+        cvv: ''
+      })
+      setStep(1)
+    } catch (error) {
+      console.error('Error submitting form:', error)
+   //   setSubmitMessage('حدث خطأ أثناء إرسال النموذج. يرجى المحاولة مرة أخرى.')
+    } finally {
+  //    setIsSubmitting(false)
+    }
+  }
     console.log('تم إرسال النموذج:', formData)
     // هنا يمكنك إضافة منطق إرسال البيانات إلى الخادم
-  }
+  
 
   return (
     <div className="app min-h-screen bg-gray-100 flex items-center justify-center p-4" dir="rtl">
@@ -45,7 +89,7 @@ export default function MultiStepForm() {
           <h2 className="text-2xl font-bold text-center mb-6">
             {step === 1 && 'المعلومات الشخصية'}
             {step === 2 && 'معلومات العمل'}
-            {step === 3 && 'معلومات الدفع'}
+            {step === 3 && 'تأكيد الطلب'}
           </h2>
           <form onSubmit={handleSubmit}>
             {step === 1 && (
@@ -136,45 +180,7 @@ export default function MultiStepForm() {
             )}
             {step === 3 && (
               <div className="space-y-4">
-                <div>
-                  <label htmlFor="cardNumber" className="block text-sm font-medium text-gray-700 mb-1">رقم البطاقة</label>
-                  <input
-                    id="cardNumber"
-                    name="cardNumber"
-                    type="text"
-                    value={formData.cardNumber}
-                    onChange={handleChange}
-                    required
-                    placeholder="أدخل رقم البطاقة"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="expiryDate" className="block text-sm font-medium text-gray-700 mb-1">تاريخ الانتهاء</label>
-                  <input
-                    id="expiryDate"
-                    name="expiryDate"
-                    type="text"
-                    value={formData.expiryDate}
-                    onChange={handleChange}
-                    required
-                    placeholder="MM/YY"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="cvv" className="block text-sm font-medium text-gray-700 mb-1">رمز الأمان CVV</label>
-                  <input
-                    id="cvv"
-                    name="cvv"
-                    type="text"
-                    value={formData.cvv}
-                    onChange={handleChange}
-                    required
-                    placeholder="أدخل رمز الأمان"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
+              <h3>لتأكيد الطلب يرجى الضغط على تأكيد ثم سوف يتواصل معك فريقنا </h3>
               </div>
             )}
           </form>

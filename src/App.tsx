@@ -6,7 +6,7 @@ import MultiStepForm from './reg-form';
 function App() {
 const [regPage,setRegPage]=useState(true)
 const handlePage=()=>{
-  setRegPage(false)
+  setRegPage(true)
 }
   return (
     <>

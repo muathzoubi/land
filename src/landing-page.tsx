@@ -38,7 +38,7 @@ export default function LandingPage({handlePage}:any) {
               اتصل بنا
             </a>
           </div>
-          <button className="hidden md:inline-flex py-2 px-3"  onClick={handlePage}>ابدأ الآن</button>
+          <button className="hidden md:inline-flex py-2 px-3"  onClick={()=>handlePage(2)}>ابدأ الآن</button>
         </nav>
       </header>
       <main className="flex-1">
@@ -52,7 +52,7 @@ export default function LandingPage({handlePage}:any) {
                 نساعدك في تأسيس شركتك والحصول على سجل تجاري موثق بكل يسر وفعالية
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                <button className="bg-white text-blue-600 hover:bg-blue-50 py-2 px-3" onClick={handlePage}>
+                <button className="bg-white text-blue-600 hover:bg-blue-50 py-2 px-3"   onClick={()=>handlePage(2)}>
                   ابدأ الآن
                 </button>
                 <button className="bg-transparent py-2 px-3 border-white text-white hover:bg-white/10">
@@ -162,7 +162,7 @@ export default function LandingPage({handlePage}:any) {
                 <h3 className="text-2xl font-semibold">معلومات الاتصال</h3>
                 <div className="flex items-center space-x-3">
                   <Phone className="w-6 h-6" />
-                  <span>+966 5568 5 6789</span>
+                  <span>055 652 0550</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-6 h-6" />

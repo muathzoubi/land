@@ -57,7 +57,7 @@ export default function MultiStepForm() {
     console.log('try:', formData,formRef)
 
       await push(formRef, formData)
-    //  setSubmitMessage('تم إرسال النموذج بنجاح!')
+      alert('تم تقديم الطلب بنجاح!')
       // Reset form after successful submission
       setFormData({
         name: '',
